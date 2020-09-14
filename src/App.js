@@ -1,17 +1,25 @@
 import React from 'react';
 import './App.css'
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Chat from './Chat';
 
 function App() {
     return (
         <div className="App">
+            <Router>
             <Header/>
-            <div className="app_body">
+            <div className="app__body">
                 <Sidebar/>
-                {/* React-Router -> Chat screen */}
+                <Switch>
+                    <Route path="/room/:roomId">
+                        <Chat/>
+                    </Route>
+                </Switch>
             </div>
+            </Router>
         </div>
     );
 }
