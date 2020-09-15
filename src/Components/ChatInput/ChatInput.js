@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ChatInput.css";
 import { useStateValue } from "../StateProvider";
 import db from "../firebase";
-import firebase from "../firebase";
+import firebase from "firebase";
 import "./ChatInput.css";
 
 function ChatInput({ channelName, channelId }) {
