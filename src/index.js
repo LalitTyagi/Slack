@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Main = () => {
-    return (
-        <h1>Clone of Slack</h1>
-    );
-}
+import App from './Components/App';
+import './index.css'
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+import {StateProvider} from "./Components/StateProvider";
+import reducer, {initialState} from "./Components/reducer";
+
+ReactDOM.render(<StateProvider initialState={initialState} reducer={reducer}><App /></StateProvider>, document.getElementById('root')); 
