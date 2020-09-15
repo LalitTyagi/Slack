@@ -3,7 +3,7 @@ import './Sidebar.css';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 
-import SidebarOption from './SidebarOption';
+import SidebarOption from '../SidebarOption/SidebarOption';
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
 
 import InboxIcon from '@material-ui/icons/Inbox';
@@ -15,11 +15,12 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
-
-import db from "./firebase";
+import {useStateValue} from "../StateProvider";
+import db from "../firebase";
 
 function Sidebar() {
     const [channels, setChannels] = useState([]);
+    const[{user}] = useStateValue(null);
 
     useEffect(()=>{
         db.collection('rooms').onSnapshot(snapshot =>(
@@ -36,7 +37,10 @@ function Sidebar() {
             <div className="sidebar__header">
                 <div className="sidebar__info">
                     <h2>Frontend Developer</h2>
-                    <h3><FiberManualRecordIcon/>Lalit Tyagi</h3>
+                    <h3>
+                        <FiberManualRecordIcon/>
+                        {user?.displayName}
+                    </h3>
                 </div>
                 <CreateIcon/>
             </div>
